@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Bot responds to message in chat 1",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "chat_id": 1,
+        "sender_id": 123,
+        "content": "Hello Ti Test"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "message": "Извините, я не могу отвечать на сообщения.",
+        "is_bot": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Regular chat message",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "chat_id": 2,
+        "sender_id": 123,
+        "content": "Hello user"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "is_bot": false
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
